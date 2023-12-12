@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+/*    outline-width: 1px;
+    outline-color: blue;
+    outline-style: solid;*/
+}
+
+b{
+    font-weight: normal;
+}
+a{
+  text-decoration: none;
+}
+.logo{
+    font-size: 1.8em;
+    text-align: center;
+    color:black;
+    text-decoration: none;
+}
+
+.p {
+    color: #fff;
+    background-color: green;
+    padding-top:1px;
+    padding-bottom: 2px;
+    padding-right:5px;
+    padding-left:0px;
+    border-radius: 0px 12px 12px 0px;
+}
+.w {
+    color: #fff;
+    background-color:green;
+    padding-top:1px;
+    padding-bottom: 2px;
+    padding-right:0px;
+    padding-left:5px;
+    border-radius: 12px 0px 0px 12px;
+}
+a p{
+    font-size:2rem;
+}
+body {
+    background-color:whitesmoke;
+    font-family: 'Gothic A1', sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.center-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding-top: 50px;
+    margin: 20px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    /*background: linear-gradient(to top right, #33ccff 0%, #006600 100%);*/
+	 border: 1px solid black;
+}
+
+form{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
+.footer-div{
+    margin-top:150px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 60px;
+    border-radius: 40px 40px 10px 10px;
+    /*background-color:#33ccff;*/
+}
+.footer-div p{
+    font-size: 0.8em;
+}
+
+.asterisk{
+    color:red;
+}
+
+.label {
+  font-size: 16px;
+  color: black;
+  text-transform: capitalize;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.radio-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-container input:checked ~ .checkmark {
+  background-color: #e5e5e5;
+}
+
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.radio-container .checkmark:after {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background: #57b846;
+}
+
+.checkmark {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #e5e5e5;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+
+/*media querie start*/
+
+@media screen and (max-width: 1000px) {
+  .center-container{
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .center-container{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .center-container{
+    width: 95%;
+  }
+  
+}
+
+@media screen and (max-width: 500px) {
+   body{
+    /*background: linear-gradient(to top right, #33ccff 0%, #006600 100%);*/
+   }
+
+	.center-container{
+     border:none;
+	}
+   .footer-div{
+      background:none; 
+   }
+   
+   .nb{
+       border-radius: 4px;
+       width: 90%;
+   }
+}
+
+@media screen and (max-width: 300px) {
+    .footer-div{
+       display: none;
+    }
+}

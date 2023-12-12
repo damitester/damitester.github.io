@@ -1,0 +1,97 @@
+<html lang="en">
+    <head>
+        <!-- Required meta tags-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Colorlib Templates">
+        <meta name="author" content="Colorlib">
+        <meta name="keywords" content="Colorlib Templates">
+
+        <!-- Title Page-->
+        <title>Jostum Alumni</title>
+
+        <!-- Main CSS-->
+        <link href="style.css" rel="stylesheet" media="all">
+        <link href="form.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <div class="center-container">
+            <a class="logo" href="/" ><p><span class="w">Jostum</span><span class="p">Nuesa</span></p></a>
+            <br />
+            <br />
+            <center>
+                <h2>Jostum Alumni Registration Form</h2>
+            </center>
+            <br />
+            <br />
+            <br />
+
+            <form id='signup' onsubmit="return validateForm(event)" th:action="@{/user/signup}" th:object="${user}" method="post">
+                <div class="input-field">
+                    <label for="name">Name<span class="asterisk">*</span></label>
+                    <input type="text" name="name" /><br />
+                </div>
+                <br />
+                <div class="input-field">
+
+                    <label class="label">Gender<span class="asterisk">*</span></label>
+                    <label class="radio-container m-r-45">Male
+                        <input type="radio" checked="checked" name="gender">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">Female
+                        <input type="radio" name="gender">
+                        <span class="checkmark"></span>
+                    </label>
+
+                </div>
+                <br />
+                <div class="input-field">
+                    <label for="email">Email<span class="asterisk">*</span></label>
+                    <input type="email" name="email" />
+                </div>
+                <br />
+                <div class="input-field">
+                    <label for="phone number">Phone Number<span class="asterisk">*</span></label>
+                    <input type="text" name="phone number"/><br />
+                </div>
+                <br />
+                <div class="input-field">
+                    <label for="department">Department<span class="asterisk">*</span></label>
+                    <input type="text" name="department"/><br />
+                </div>
+                <br />
+                <div class="input-field">
+                    <label for="college">College<span class="asterisk">*</span></label>
+                    <input type="text" name="college"/><br />
+                </div>
+                <br />
+                <div class="input-field">
+                    <label for="year of admission">Year of Admission<span class="asterisk">*</span></label>
+                    <input type="date" name="year of admission"/><br />
+                </div>
+                <br />
+                <div class="input-field">
+                    <label for="confirmPassword">Year of Graduation<span class="asterisk">*</span></label>
+                    <input id="confirmPassword" type="date" name="year of grauatoin"/><br />
+                </div>
+                <br />
+                <button type="submit">Submit</button>
+            </form>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+
+            <div class="footer-div">
+                <center>
+                    <p><a href="">Private Policy</a> | <a href="">Contact</a></p>
+                    <p>Copyright&copy; 2023 - Jostum_Nuesa | Designed by <a href="https://damintel.github.io/" target="_blank">Damintel</a></p>
+                </center>
+            </div>
+
+        </div>
+    </body>
+</html>
