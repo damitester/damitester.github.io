@@ -26,54 +26,45 @@
             <br />
             <br />
 
-            <form id='signup' onsubmit="return validateForm(event)" th:action="@{/user/signup}" th:object="${user}" method="post">
+            <form method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf4c_cNB0CIKixQMGXtrSZ9ToCKzlO9B-MG_D3FQDUxw4fOEw/formResponse">
                 <div class="input-field">
-                    <label for="name">Name<span class="asterisk">*</span></label>
-                    <input type="text" name="name" /><br />
-                </div>
-                <br />
-                <div class="input-field">
-
-                    <label class="label">Gender<span class="asterisk">*</span></label>
-                    <label class="radio-container m-r-45">Male
-                        <input type="radio" checked="checked" name="gender">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radio-container">Female
-                        <input type="radio" name="gender">
-                        <span class="checkmark"></span>
-                    </label>
-
+                    <label for="entry.2005620554">Name<span class="asterisk">*</span></label>
+                    <input type="text" name="entry.2005620554" /><br />
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="email">Email<span class="asterisk">*</span></label>
-                    <input type="email" name="email" />
+                    <input type="email" name="entry.1045781291" />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="phone number">Phone Number<span class="asterisk">*</span></label>
-                    <input type="text" name="phone number"/><br />
+                    <label for="entry.1065046570">Address<span class="asterisk">*</span></label>
+                    <input type="text" name="entry.1065046570"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="department">Department<span class="asterisk">*</span></label>
-                    <input type="text" name="department"/><br />
+                    <label for="entry.1166974658">Phone Number<span class="asterisk">*</span></label>
+                    <input type="text" name="entry.1166974658"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="college">College<span class="asterisk">*</span></label>
-                    <input type="text" name="college"/><br />
+                    <label for="entry.839337160">Department<span class="asterisk">*</span></label>
+                    <input type="text" name="entry.839337160"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="year of admission">Year of Admission<span class="asterisk">*</span></label>
-                    <input type="date" name="year of admission"/><br />
+                    <label for="entry.1512252690">College<span class="asterisk">*</span></label>
+                    <input type="text" name="entry.1512252690"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="confirmPassword">Year of Graduation<span class="asterisk">*</span></label>
-                    <input id="confirmPassword" type="date" name="year of grauatoin"/><br />
+                    <label for="entry.1276562676">Year of Admission<span class="asterisk">*</span></label>
+                    <input type="date" name="entry.1276562676"/><br />
+                </div>
+                <br />
+                <div class="input-field">
+                    <label for="entry.792260035">Year of Graduation<span class="asterisk">*</span></label>
+                    <input type="date" name="entry.792260035"/><br />
                 </div>
                 <br />
                 <button type="submit">Submit</button>
