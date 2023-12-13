@@ -33,7 +33,7 @@ input[type="text"]:focus,input[type="date"]:focus, input[type="password"]:focus,
 button[type="submit"] {
     border: none;
     border-radius: 5px;
-    background-color: white;
+    background-color: grey;
     color: black;
     padding: 8px;
     width: 80%;
