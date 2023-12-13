@@ -31,53 +31,53 @@
 
             <form id="register"  method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf4c_cNB0CIKixQMGXtrSZ9ToCKzlO9B-MG_D3FQDUxw4fOEw/formResponse">
                 <div class="input-field">
-                    <label for="entry.2005620554">Name<span class="asterisk">*</span></label>
-                    <input id="name" type="text" name="entry.2005620554" /><br />
+                    <label>Name<span class="asterisk">*</span></label>
+                    <input id="name" type="text"/><br />
                 </div>
                 <br />
                 <div class="input-field">
                     <div id="gender">
                         <label>male</label>
-                        <input id="male" type="radio" name="entry.21973015" value="male">
+                        <input id="male" type="radio" value="male">
 
-                        <label class="radio-container">Female</label>
-                        <input id="female" type="radio" name="entry.21973015" value="female">
+                        <label>Female</label>
+                        <input id="female" type="radio" value="female">
                     </div>
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="email">Email<span class="asterisk">*</span></label>
-                    <input id="email" type="email" name="entry.1045781291" />
+                    <input id="email" type="email"/>
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="entry.1065046570">Address<span class="asterisk">*</span></label>
-                    <input id="address" type="text" name="entry.1065046570"/><br />
+                    <label>Address<span class="asterisk">*</span></label>
+                    <input id="address" type="text"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="entry.1166974658">Phone Number<span class="asterisk">*</span></label>
-                    <input id="phone" type="text" name="entry.1166974658"/><br />
+                    <label>Phone Number<span class="asterisk">*</span></label>
+                    <input id="phone" type="text"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="entry.839337160">Department<span class="asterisk">*</span></label>
-                    <input id="department" type="text" name="entry.839337160"/><br />
+                    <label>Department<span class="asterisk">*</span></label>
+                    <input id="department" type="text"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="entry.1512252690">College<span class="asterisk">*</span></label>
-                    <input id="college" type="text" name="entry.1512252690"/><br />
+                    <label>College<span class="asterisk">*</span></label>
+                    <input id="college" type="text"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="entry.1276562676">Year of Admission<span class="asterisk">*</span></label>
-                    <input id="admission" type="date" name="entry.1276562676"/><br />
+                    <label>Year of Admission<span class="asterisk">*</span></label>
+                    <input id="admission" type="date"/><br />
                 </div>
                 <br />
                 <div class="input-field">
-                    <label for="entry.792260035">Year of Graduation<span class="asterisk">*</span></label>
-                    <input id="graduation" type="date" name="entry.792260035"/><br />
+                    <label>Year of Graduation<span class="asterisk">*</span></label>
+                    <input id="graduation" type="date"/><br />
                 </div>
                 <br />
                 <button type="submit">Submit</button>
@@ -87,7 +87,6 @@
             <br />
             <br />
             <br />
-
 
             <div class="footer-div">
                 <center>
@@ -106,7 +105,7 @@
                     event.preventDefault();
 
                     var name = $('#name').val();
-                    var gender = $('input[name="entry.21973015"]:checked').val();
+                    var gender = $('input[name="entry.1550193149"]:checked').val();
                     var email = $('#email').val();
                     var address = $('#address').val();
                     var phone = $('#phone').val();
@@ -117,17 +116,17 @@
                     
                     var data = {
                         'entry.2005620554': name,
-                        'entry.21973015': gender,
+                        'entry.1550193149': gender,
                         'entry.1045781291': email,
                         'entry.1065046570': address,
                         'entry.1166974658': phone,
                         'entry.839337160': department,
-                        'entry.1512252690': college,
-                        'entry.1276562676': admission,
-                        'entry.792260035': graduation
+                        'entry.894929941': college,
+                        'entry.1815216473': admission,
+                        'entry.1562736331': graduation
 
                     };
-
+ 
                     $.ajax({
                         type: 'POST',
                         url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf4c_cNB0CIKixQMGXtrSZ9ToCKzlO9B-MG_D3FQDUxw4fOEw/formResponse",
