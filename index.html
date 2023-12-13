@@ -26,7 +26,7 @@
             <br />
             <br />
 
-            <form method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf4c_cNB0CIKixQMGXtrSZ9ToCKzlO9B-MG_D3FQDUxw4fOEw/formResponse">
+            <form id='signup' onsubmit="return validateForm(event)" method="post">
                 <div class="input-field">
                     <label for="entry.2005620554">Name<span class="asterisk">*</span></label>
                     <input type="text" name="entry.2005620554" /><br />
@@ -84,5 +84,57 @@
             </div>
 
         </div>
+        <script>
+
+            function validateForm(event) {
+                event.preventDefault();
+               submitForm();
+
+            }
+
+            function displayError(errorMsg) {
+                var conPassErr = document.getElementById("confirmPasErr");
+                conPassErr.textContent = errorMsg;
+
+            }
+
+            function submitForm() {
+
+                var name = $('#demo_name').val();
+                var email = $('#demo_name').val();
+                var address = $('#demo_name').val();
+                var phone = $('#demo_name').val();
+                var department = $('#demo_name').val();
+                var college = $('#demo_name').val();
+                var admission = $('#demo_name').val();
+                var graduation = $('#demo_name').val();
+
+
+                var data = {
+                     'entry.2005620554':name,
+                     'entry.1045781291':email,
+                     'entry.1065046570':address,
+                     'entry.1166974658':phone,
+                     'entry.839337160':department,
+                     'entry.1512252690':college,
+                     'entry.1276562676':admission,
+                     'entry.792260035':graduation
+                     
+                };
+
+                $.ajax({
+                    url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf4c_cNB0CIKixQMGXtrSZ9ToCKzlO9B-MG_D3FQDUxw4fOEw/formResponse",
+                    method: "POST",
+                    data: data,
+                    success: function (response) {
+                        alert('send success');
+                    },
+                    error: function (status, error) {
+                        console.error(status + ":" + error);
+                    }
+                });
+            }
+
+        </script>  
     </body>
 </html>
