@@ -13,9 +13,9 @@
         <!-- Main CSS-->
         <link href="style.css" rel="stylesheet" media="all">
         <link href="form.css" rel="stylesheet" media="all">
-        
+
         <!-- jquery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="center-container">
@@ -29,45 +29,55 @@
             <br />
             <br />
 
-            <form id='signup' onsubmit="return validateForm(event)" method="post">
+            <form id="register"  method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf4c_cNB0CIKixQMGXtrSZ9ToCKzlO9B-MG_D3FQDUxw4fOEw/formResponse">
                 <div class="input-field">
                     <label for="entry.2005620554">Name<span class="asterisk">*</span></label>
-                    <input type="text" name="entry.2005620554" /><br />
+                    <input id="name" type="text" name="entry.2005620554" /><br />
+                </div>
+                <br />
+                <div class="input-field">
+                    <div id="gender">
+                        <label>male</label>
+                        <input id="male" type="radio" name="entry.21973015" value="male">
+
+                        <label class="radio-container">Female</label>
+                        <input id="female" type="radio" name="entry.21973015" value="female">
+                    </div>
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="email">Email<span class="asterisk">*</span></label>
-                    <input type="email" name="entry.1045781291" />
+                    <input id="email" type="email" name="entry.1045781291" />
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="entry.1065046570">Address<span class="asterisk">*</span></label>
-                    <input type="text" name="entry.1065046570"/><br />
+                    <input id="address" type="text" name="entry.1065046570"/><br />
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="entry.1166974658">Phone Number<span class="asterisk">*</span></label>
-                    <input type="text" name="entry.1166974658"/><br />
+                    <input id="phone" type="text" name="entry.1166974658"/><br />
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="entry.839337160">Department<span class="asterisk">*</span></label>
-                    <input type="text" name="entry.839337160"/><br />
+                    <input id="department" type="text" name="entry.839337160"/><br />
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="entry.1512252690">College<span class="asterisk">*</span></label>
-                    <input type="text" name="entry.1512252690"/><br />
+                    <input id="college" type="text" name="entry.1512252690"/><br />
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="entry.1276562676">Year of Admission<span class="asterisk">*</span></label>
-                    <input type="date" name="entry.1276562676"/><br />
+                    <input id="admission" type="date" name="entry.1276562676"/><br />
                 </div>
                 <br />
                 <div class="input-field">
                     <label for="entry.792260035">Year of Graduation<span class="asterisk">*</span></label>
-                    <input type="date" name="entry.792260035"/><br />
+                    <input id="graduation" type="date" name="entry.792260035"/><br />
                 </div>
                 <br />
                 <button type="submit">Submit</button>
@@ -87,56 +97,51 @@
             </div>
 
         </div>
+
         <script>
+            $(document).ready(function () {
 
-            function validateForm(event) {
-                event.preventDefault();
-                submitForm();
+                $('#register').submit(function (event) {
 
-            }
+                    event.preventDefault();
 
-            function displayError(errorMsg) {
-                var conPassErr = document.getElementById("confirmPasErr");
-                conPassErr.textContent = errorMsg;
+                    var name = $('#name').val();
+                    var gender = $('input[name="entry.21973015"]:checked').val();
+                    var email = $('#email').val();
+                    var address = $('#address').val();
+                    var phone = $('#phone').val();
+                    var department = $('#department').val();
+                    var college = $('#college').val();
+                    var admission = $('#admission').val();
+                    var graduation = $('#graduation').val();
+                    
+                    var data = {
+                        'entry.2005620554': name,
+                        'entry.21973015': gender,
+                        'entry.1045781291': email,
+                        'entry.1065046570': address,
+                        'entry.1166974658': phone,
+                        'entry.839337160': department,
+                        'entry.1512252690': college,
+                        'entry.1276562676': admission,
+                        'entry.792260035': graduation
 
-            }
+                    };
 
-            function submitForm() {
+                    $.ajax({
+                        type: 'POST',
+                        url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf4c_cNB0CIKixQMGXtrSZ9ToCKzlO9B-MG_D3FQDUxw4fOEw/formResponse",
+                        data: data,
+                        contentType: 'application/json',
+                        dataType: 'jsonp',
+                        complete: function () {
+                            alert('send success');
+                        }
 
-                var name = $('#demo_name').val();
-                var email = $('#demo_name').val();
-                var address = $('#demo_name').val();
-                var phone = $('#demo_name').val();
-                var department = $('#demo_name').val();
-                var college = $('#demo_name').val();
-                var admission = $('#demo_name').val();
-                var graduation = $('#demo_name').val();
+                    });
 
-
-                var data = {
-                     'entry.2005620554':name,
-                     'entry.1045781291':email,
-                     'entry.1065046570':address,
-                     'entry.1166974658':phone,
-                     'entry.839337160':department,
-                     'entry.1512252690':college,
-                     'entry.1276562676':admission,
-                     'entry.792260035':graduation
-                     
-                };
-
-                $.ajax({
-                   type: 'POST',
-                   url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf4c_cNB0CIKixQMGXtrSZ9ToCKzlO9B-MG_D3FQDUxw4fOEw/formResponse",
-                   data: data,
-                   contentType: 'application/json',
-                   dataType: 'jsonp',
-                   complete: function() {
-                      alert('send success');
-                }
-              });
-            }
-
-        </script>  
+                });
+            });
+        </script>
     </body>
 </html>
