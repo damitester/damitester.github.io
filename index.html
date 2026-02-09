@@ -1,146 +1,104 @@
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags-->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Colorlib Templates">
-        <meta name="author" content="Colorlib">
-        <meta name="keywords" content="Colorlib Templates">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Vacancy - Executive Personal Assistant</title>
 
-        <!-- Title Page-->
-        <title>Jostum Alumni</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-        <!-- Main CSS-->
-        <link href="style.css" rel="stylesheet" media="all">
-        <link href="form.css" rel="stylesheet" media="all">
+<!-- Vue CDN -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-        <!-- jquery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="center-container">
-            <a class="logo" href="/" ><p><span class="w">Jostum</span><span class="p">Nuesa</span></p></a>
-            <br />
-            <br />
-            <center>
-                <h2>Jostum Alumni<br>Registration Form</h2>
-            </center>
-            <br />
-            <br />
-            <br />
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
 
-            <form id="register"  method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdBJsQlwJceZFju1tyYvET6R2YpNBelKlbun0F95wkQ0m5w3Q/formResponse">
-                <div class="input-field">
-                    <label>Name<span class="asterisk">*</span></label>
-                    <input id="name" type="text"/><br />
-                </div>
-                <br />
-                <div class="input-field">
-                    <div id="gender">
-                        <label>male</label>
-                        <input id="male" name="entry.1550193149" type="radio" value="male">
+<div id="app" class="w-full max-w-3xl">
 
-                        <label>Female</label>
-                        <input id="female" name="entry.1550193149" type="radio" value="female">
-                    </div>
-                </div>
-                <br />
-                <div class="input-field">
-                    <label for="email">Email<span class="asterisk">*</span></label>
-                    <input id="email" type="email"/>
-                </div>
-                <br />
-                <div class="input-field">
-                    <label>Address<span class="asterisk">*</span></label>
-                    <input id="address" type="text"/><br />
-                </div>
-                <br />
-                <div class="input-field">
-                    <label>Phone Number<span class="asterisk">*</span></label>
-                    <input id="phone" type="text"/><br />
-                </div>
-                <br />
-                <div class="input-field">
-                    <label>Department<span class="asterisk">*</span></label>
-                    <input id="department" type="text"/><br />
-                </div>
-                <br />
-                <div class="input-field">
-                    <label>College<span class="asterisk">*</span></label>
-                    <input id="college" type="text"/><br />
-                </div>
-                <br />
-                <div class="input-field">
-                    <label>Year of Admission<span class="asterisk">*</span></label>
-                    <input id="admission" type="date"/><br />
-                </div>
-                <br />
-                <div class="input-field">
-                    <label>Year of Graduation<span class="asterisk">*</span></label>
-                    <input id="graduation" type="date"/><br />
-                </div>
-                <br />
-                <button type="submit">Submit</button>
-            </form>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+    <div class="bg-white rounded-2xl shadow-lg p-8 space-y-6 border border-gray-200">
 
-            <div class="footer-div">
-                <center>
-                    <p><a href="">Private Policy</a> | <a href="">Contact</a></p>
-                    <p>Copyright&copy; 2023 - Jostum_Nuesa | Designed by <a href="https://damintel.github.io/" target="_blank">Damintel</a></p>
-                </center>
-            </div>
-
+        <!-- Header -->
+        <div class="text-center space-y-2">
+            <h1 class="text-3xl font-bold text-gray-800">
+                Job Vacancy
+            </h1>
+            <h2 class="text-xl font-semibold text-gray-700">
+                {{ job.title }}
+            </h2>
         </div>
 
-        <script>
-            $(document).ready(function () {
+        <!-- Job Details -->
+        <div class="grid sm:grid-cols-2 gap-4 text-gray-700 text-sm">
+            <div>
+                <p class="font-semibold">Location:</p>
+                <p>{{ job.location }}</p>
+            </div>
 
-                $('#register').submit(function (event) {
+            <div>
+                <p class="font-semibold">Employment type:</p>
+                <p>{{ job.type }}</p>
+            </div>
 
-                    event.preventDefault();
+            <div class="sm:col-span-2">
+                <p class="font-semibold">Application deadline:</p>
+                <p>{{ job.deadline }}</p>
+            </div>
+        </div>
 
-                    var name = $('#name').val();
-                    var gender = $('input[name="entry.1550193149"]:checked').val();
-                    var email = $('#email').val();
-                    var address = $('#address').val();
-                    var phone = $('#phone').val();
-                    var department = $('#department').val();
-                    var college = $('#college').val();
-                    var admission = $('#admission').val();
-                    var graduation = $('#graduation').val();
+        <!-- Summary -->
+        <div class="space-y-3 text-gray-700">
+            <h3 class="font-semibold text-gray-800">Position summary</h3>
+            <p>{{ job.summary }}</p>
+        </div>
 
-                    var data = {
-                        'entry.2005620554': name,
-                        'entry.1550193149': gender,
-                        'entry.1045781291': email,
-                        'entry.1065046570': address,
-                        'entry.1166974658': phone,
-                        'entry.839337160': department,
-                        'entry.894929941': college,
-                        'entry.1815216473': admission,
-                        'entry.1562736331': graduation
+        <!-- Requirements -->
+        <div class="space-y-3 text-gray-700">
+            <p>{{ job.requirements }}</p>
+            <p>{{ job.independence }}</p>
+            <p>{{ job.flexibility }}</p>
+        </div>
 
-                    };
+        <!-- Application Instructions -->
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 text-gray-800 space-y-3">
+            <p>
+                Applicants should submit a brief professional summary highlighting relevant experience and digital capabilities.
+            </p>
 
-                    $.ajax({
-                        type: 'POST',
-                        url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdBJsQlwJceZFju1tyYvET6R2YpNBelKlbun0F95wkQ0m5w3Q/formResponse",
-                        data: data,
-                        contentType: 'application/json',
-                        dataType: 'jsonp',
-                        complete: function () {
-                            alert('send success');
-                        }
+            <div class="text-center">
+                <a :href="'mailto:' + job.email"
+                   class="inline-block mt-2 px-6 py-3 rounded-lg bg-gray-800 text-white font-medium hover:bg-gray-700 transition">
+                    Apply via Email
+                </a>
+                <p class="text-sm mt-2">{{ job.email }}</p>
+            </div>
+        </div>
 
-                    });
+    </div>
 
-                });
-            });
-        </script>
-    </body>
+</div>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            job: {
+                title: "Executive Personal Assistant (AI & Digital-Savvy)",
+                location: "Abuja",
+                type: "half time",
+                deadline: "march, 20th 2026",
+                summary: "Seeking a highly capable Executive Personal Assistant to provide high level administrative, operational, and digital support. Responsibilities include complex scheduling and coordination, content creation, digital marketing, and management of personal and professional projects.",
+                requirements: "The ideal candidate must be exceptionally organized, proactive, and discreet, with strong proficiency in AI tools, content creation platforms, and general computing. A solid understanding of media, branding, and marketing is essential, along with excellent written and verbal communication skills.",
+                independence: "Ability to operate independently at a fast pace is required.",
+                flexibility: "Flexible hours. Remote or hybrid considered.",
+                email: "vivianmseve93@gmail.com"
+            }
+        }
+    }
+}).mount('#app');
+</script>
+
+</body>
 </html>
