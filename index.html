@@ -3,130 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Personal Assistant - Job Vacancy</title>
+    <title>Executive Personal Assistant (AI & Digital-Savvy) - Job Vacancy</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .gradient-border {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 3px;
-            border-radius: 1rem;
-        }
-        
-        .card-content {
-            background: white;
-            border-radius: calc(1rem - 3px);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
+        .job-card { backdrop-filter: blur(10px); }
+        .deadline-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        .hover-lift:hover { transform: translateY(-5px); }
+        .transition-all { transition: all 0.3s ease; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen py-8 px-4">
-    <div class="max-w-2xl mx-auto">
-        <!-- Main Card -->
-        <div class="gradient-border">
-            <div class="card-content p-8 md:p-12">
-                <!-- Header -->
-                <div class="text-center mb-8">
-                    <div class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-                        NOW HIRING
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <div id="app" class="max-w-3xl w-full">
+        <div class="job-card bg-white rounded-2xl shadow-2xl overflow-hidden transition-all hover-lift">
+            <!-- Header Section -->
+            <div class="bg-gradient-to-r from-slate-800 to-slate-700 text-white p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-2">Executive Personal Assistant</h1>
+                        <div class="flex items-center gap-2 text-slate-200">
+                            <i class="fas fa-microchip text-teal-300"></i>
+                            <span class="text-lg font-medium">AI & Digital-Savvy</span>
+                        </div>
                     </div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                        Executive Personal Assistant
-                    </h1>
-                    <p class="text-lg text-purple-600 font-semibold">(AI & Digital-Savvy)</p>
-                </div>
-
-                <!-- Key Info Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                    <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
-                        <div class="text-2xl mb-2">📍</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Location</div>
-                        <div class="font-semibold text-gray-900">Abuja</div>
-                    </div>
-                    <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
-                        <div class="text-2xl mb-2">⏰</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Employment Type</div>
-                        <div class="font-semibold text-gray-900">Half Time</div>
-                    </div>
-                    <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
-                        <div class="text-2xl mb-2">📅</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-wide mb-1">Deadline</div>
-                        <div class="font-semibold text-gray-900">March 20th, 2026</div>
+                    <div class="bg-teal-500 text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2">
+                        <i class="fas fa-clock"></i>
+                        <span>Half Time</span>
                     </div>
                 </div>
-
+                
+                <div class="flex flex-wrap items-center gap-4 mt-6 text-slate-300">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Abuja</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-laptop-house"></i>
+                        <span>Remote or Hybrid Considered</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Flexible Hours</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="p-8">
+                <!-- Deadline Alert -->
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-8 rounded-r flex justify-between items-center deadline-pulse">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-hourglass-end text-amber-600 text-xl"></i>
+                        <div>
+                            <p class="font-semibold text-amber-800">Application Deadline</p>
+                            <p class="text-amber-700">March 20th, 2026</p>
+                        </div>
+                    </div>
+                    <div class="text-amber-800 font-bold text-lg">
+                        <span>{{ daysRemaining }}</span> days remaining
+                    </div>
+                </div>
+                
                 <!-- Position Summary -->
                 <div class="mb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">💼</span>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-file-alt text-teal-500"></i>
                         Position Summary
                     </h2>
-                    <div class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-6 border border-purple-100">
-                        <p class="text-gray-700 leading-relaxed">
-                            Seeking a highly capable Executive Personal Assistant to provide high level administrative, operational, and digital support. Responsibilities include complex scheduling and coordination, content creation, digital marketing, and management of personal and professional projects.
-                        </p>
-                    </div>
+                    <p class="text-slate-700 leading-relaxed">
+                        Seeking a highly capable Executive Personal Assistant to provide high level administrative, operational, and digital support. 
+                        Responsibilities include complex scheduling and coordination, content creation, digital marketing, and management of 
+                        personal and professional projects.
+                    </p>
                 </div>
-
+                
                 <!-- Ideal Candidate -->
                 <div class="mb-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✨</span>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-user-check text-teal-500"></i>
                         Ideal Candidate
                     </h2>
-                    <div class="space-y-3">
-                        <div class="flex items-start">
-                            <div class="text-purple-500 mr-3 mt-1">▸</div>
-                            <p class="text-gray-700">Exceptionally organized, proactive, and discreet</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-purple-500 mr-3 mt-1">▸</div>
-                            <p class="text-gray-700">Strong proficiency in AI tools, content creation platforms, and general computing</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-purple-500 mr-3 mt-1">▸</div>
-                            <p class="text-gray-700">Solid understanding of media, branding, and marketing</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-purple-500 mr-3 mt-1">▸</div>
-                            <p class="text-gray-700">Excellent written and verbal communication skills</p>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="text-purple-500 mr-3 mt-1">▸</div>
-                            <p class="text-gray-700">Ability to operate independently at a fast pace</p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <li class="flex items-start gap-2 text-slate-700">
+                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
+                            <span>Exceptionally organized, proactive, and discreet</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-slate-700">
+                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
+                            <span>Strong proficiency in AI tools & content creation platforms</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-slate-700">
+                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
+                            <span>Solid understanding of media, branding, and marketing</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-slate-700">
+                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
+                            <span>Excellent written and verbal communication skills</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-slate-700 md:col-span-2">
+                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
+                            <span>Ability to operate independently at a fast pace</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Digital Skills -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-laptop-code text-teal-500"></i>
+                        Digital Capabilities
+                    </h2>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full font-medium flex items-center gap-2">
+                            <i class="fas fa-robot text-teal-500"></i> AI Tools
+                        </span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full font-medium flex items-center gap-2">
+                            <i class="fas fa-pen-nib text-teal-500"></i> Content Creation
+                        </span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full font-medium flex items-center gap-2">
+                            <i class="fas fa-chart-line text-teal-500"></i> Digital Marketing
+                        </span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full font-medium flex items-center gap-2">
+                            <i class="fas fa-tools text-teal-500"></i> General Computing
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Application Instructions -->
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-paper-plane text-teal-500"></i>
+                        How To Apply
+                    </h2>
+                    <p class="text-slate-700 mb-4">
+                        Applicants should submit a brief professional summary highlighting relevant experience and digital capabilities.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6">
+                        <a :href="'mailto:' + applicationEmail + '?subject=Application: Executive Personal Assistant (AI & Digital-Savvy)'" 
+                           class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-3 transition-all w-full sm:w-auto">
+                            <i class="fas fa-envelope"></i>
+                            Apply via Email
+                        </a>
+                        
+                        <div class="text-center sm:text-right">
+                            <p class="text-slate-600 font-medium">Send your application to:</p>
+                            <div class="flex items-center justify-center sm:justify-end gap-2 mt-1">
+                                <i class="fas fa-at text-teal-500"></i>
+                                <a :href="'mailto:' + applicationEmail" class="text-slate-800 font-bold text-lg hover:text-teal-600 transition-colors">
+                                    {{ applicationEmail }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Additional Info -->
-                <div class="bg-slate-50 rounded-lg p-6 border border-slate-200 mb-8">
-                    <p class="text-gray-700 text-center">
-                        <span class="font-semibold text-gray-900">Flexible hours.</span> Remote or hybrid considered.
-                    </p>
-                </div>
-
-                <!-- How to Apply -->
-                <div class="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-6 text-white text-center">
-                    <h2 class="text-xl font-bold mb-3">Ready to Apply?</h2>
-                    <p class="mb-4 text-purple-100">
-                        Submit a brief professional summary highlighting relevant experience and digital capabilities.
-                    </p>
-                    <a href="mailto:vivianmseve93@gmail.com" 
-                       class="inline-block bg-white text-purple-600 font-semibold px-8 py-3 rounded-full hover:bg-purple-50 transition-colors duration-200 shadow-lg">
-                        📧 vivianmseve93@gmail.com
-                    </a>
+                
+                <!-- Footer Note -->
+                <div class="text-center text-slate-500 text-sm mt-8 pt-6 border-t border-slate-200">
+                    <p>Please include "Executive Personal Assistant Application" in your email subject line.</p>
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-        <div class="text-center mt-6 text-gray-500 text-sm">
-            We look forward to hearing from you!
-        </div>
     </div>
+
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    applicationEmail: 'vivianmseve93@gmail.com',
+                    deadline: new Date('2026-03-20'),
+                    today: new Date()
+                };
+            },
+            computed: {
+                daysRemaining() {
+                    const diffTime = this.deadline - this.today;
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    return diffDays > 0 ? diffDays : 0;
+                }
+            }
+        }).mount('#app');
+    </script>
 </body>
 </html>
