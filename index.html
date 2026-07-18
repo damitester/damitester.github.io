@@ -1,195 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Personal Assistant (AI & Digital-Savvy) - Job Vacancy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
-        .job-card { backdrop-filter: blur(10px); }
-        .deadline-pulse { animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
-        .hover-lift:hover { transform: translateY(-5px); }
-        .transition-all { transition: all 0.3s ease; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vivian Mseve — HR Leader · Fashion · Mseve Initiative · Pageantry &amp; Art</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ivory: '#FBF7F4',
+          blush: '#F3DEE2',
+          rose: '#C48A93',
+          wine: '#6E2439',
+          gold: '#BFA06A',
+          ink: '#2B2320',
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  body { background-color: #FBF7F4; }
+
+  ::selection { background: #C48A93; color: #FBF7F4; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tagline-accent {
+    background: linear-gradient(90deg, #6E2439, #C48A93 60%, #BFA06A);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .emblem-ring { animation: spin-slow 40s linear infinite; transform-origin: center; }
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #6E2439;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .hairline { background: linear-gradient(90deg, transparent, #C48A93, transparent); height: 1px; }
+</style>
 </head>
-<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
-    <div id="app" class="max-w-3xl w-full">
-        <div class="job-card bg-white rounded-2xl shadow-2xl overflow-hidden transition-all hover-lift">
-            <!-- Header Section -->
-            <div class="bg-gradient-to-r from-slate-800 to-slate-700 text-white p-8">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div>
-                        <h1 class="text-3xl md:text-4xl font-bold mb-2">Executive Personal Assistant</h1>
-                        <div class="flex items-center gap-2 text-slate-200">
-                            <i class="fas fa-microchip text-teal-300"></i>
-                            <span class="text-lg font-medium">AI & Digital-Savvy</span>
-                        </div>
-                    </div>
-                    <div class="bg-teal-500 text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2">
-                        <i class="fas fa-clock"></i>
-                        <span>Half Time</span>
-                    </div>
-                </div>
-                
-                <div class="flex flex-wrap items-center gap-4 mt-6 text-slate-300">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Abuja</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-laptop-house"></i>
-                        <span>Remote or Hybrid Considered</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Flexible Hours</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="p-8">
-                <!-- Deadline Alert -->
-                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-8 rounded-r flex justify-between items-center deadline-pulse">
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-hourglass-end text-amber-600 text-xl"></i>
-                        <div>
-                            <p class="font-semibold text-amber-800">Application Deadline</p>
-                            <p class="text-amber-700">March 20th, 2026</p>
-                        </div>
-                    </div>
-                    <div class="text-amber-800 font-bold text-lg">
-                        <span>{{ daysRemaining }}</span> days remaining
-                    </div>
-                </div>
-                
-                <!-- Position Summary -->
-                <div class="mb-8">
-                    <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <i class="fas fa-file-alt text-teal-500"></i>
-                        Position Summary
-                    </h2>
-                    <p class="text-slate-700 leading-relaxed">
-                        Seeking a highly capable Executive Personal Assistant to provide high level administrative, operational, and digital support. 
-                        Responsibilities include complex scheduling and coordination, content creation, digital marketing, and management of 
-                        personal and professional projects.
-                    </p>
-                </div>
-                
-                <!-- Ideal Candidate -->
-                <div class="mb-8">
-                    <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <i class="fas fa-user-check text-teal-500"></i>
-                        Ideal Candidate
-                    </h2>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <li class="flex items-start gap-2 text-slate-700">
-                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
-                            <span>Exceptionally organized, proactive, and discreet</span>
-                        </li>
-                        <li class="flex items-start gap-2 text-slate-700">
-                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
-                            <span>Strong proficiency in AI tools & content creation platforms</span>
-                        </li>
-                        <li class="flex items-start gap-2 text-slate-700">
-                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
-                            <span>Solid understanding of media, branding, and marketing</span>
-                        </li>
-                        <li class="flex items-start gap-2 text-slate-700">
-                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
-                            <span>Excellent written and verbal communication skills</span>
-                        </li>
-                        <li class="flex items-start gap-2 text-slate-700 md:col-span-2">
-                            <i class="fas fa-check-circle text-teal-500 mt-1"></i>
-                            <span>Ability to operate independently at a fast pace</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Digital Skills -->
-                <div class="mb-10">
-                    <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <i class="fas fa-laptop-code text-teal-500"></i>
-                        Digital Capabilities
-                    </h2>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full font-medium flex items-center gap-2">
-                            <i class="fas fa-robot text-teal-500"></i> AI Tools
-                        </span>
-                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full font-medium flex items-center gap-2">
-                            <i class="fas fa-pen-nib text-teal-500"></i> Content Creation
-                        </span>
-                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full font-medium flex items-center gap-2">
-                            <i class="fas fa-chart-line text-teal-500"></i> Digital Marketing
-                        </span>
-                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full font-medium flex items-center gap-2">
-                            <i class="fas fa-tools text-teal-500"></i> General Computing
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- Application Instructions -->
-                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                    <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <i class="fas fa-paper-plane text-teal-500"></i>
-                        How To Apply
-                    </h2>
-                    <p class="text-slate-700 mb-4">
-                        Applicants should submit a brief professional summary highlighting relevant experience and digital capabilities.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6">
-                        <a :href="'mailto:' + applicationEmail + '?subject=Application: Executive Personal Assistant (AI & Digital-Savvy)'" 
-                           class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-3 transition-all w-full sm:w-auto">
-                            <i class="fas fa-envelope"></i>
-                            Apply via Email
-                        </a>
-                        
-                        <div class="text-center sm:text-right">
-                            <p class="text-slate-600 font-medium">Send your application to:</p>
-                            <div class="flex items-center justify-center sm:justify-end gap-2 mt-1">
-                                <i class="fas fa-at text-teal-500"></i>
-                                <a :href="'mailto:' + applicationEmail" class="text-slate-800 font-bold text-lg hover:text-teal-600 transition-colors">
-                                    {{ applicationEmail }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Footer Note -->
-                <div class="text-center text-slate-500 text-sm mt-8 pt-6 border-t border-slate-200">
-                    <p>Please include "Executive Personal Assistant Application" in your email subject line.</p>
-                </div>
-            </div>
-        </div>
+<body class="font-body text-ink antialiased">
+
+<div id="app">
+
+  <!-- NAV -->
+  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-ivory/80 border-b border-rose/10">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <a href="#top" class="font-display text-2xl tracking-wide text-wine">Mseve</a>
+
+      <nav class="hidden md:flex items-center gap-10 text-xs tracking-[0.2em] uppercase text-ink/70">
+        <a href="#worlds" class="hover:text-wine transition-colors">Worlds</a>
+        <a href="#highlights" class="hover:text-wine transition-colors">Highlights</a>
+        <a href="#impact" class="hover:text-wine transition-colors">Impact</a>
+        <a href="#contact" class="hover:text-wine transition-colors">Contact</a>
+      </nav>
+
+      <button @click="navOpen = !navOpen" class="md:hidden text-wine" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
     </div>
 
-    <script>
-        const { createApp } = Vue;
-        
-        createApp({
-            data() {
-                return {
-                    applicationEmail: 'vivianmseve93@gmail.com',
-                    deadline: new Date('2026-03-20'),
-                    today: new Date()
-                };
-            },
-            computed: {
-                daysRemaining() {
-                    const diffTime = this.deadline - this.today;
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                    return diffDays > 0 ? diffDays : 0;
-                }
-            }
-        }).mount('#app');
-    </script>
+    <div v-show="navOpen" class="md:hidden bg-ivory border-t border-rose/10 px-6 py-4 flex flex-col gap-4 text-sm tracking-wide">
+      <a href="#worlds" @click="navOpen=false" class="text-ink/80">Worlds</a>
+      <a href="#highlights" @click="navOpen=false" class="text-ink/80">Highlights</a>
+      <a href="#impact" @click="navOpen=false" class="text-ink/80">Impact</a>
+      <a href="#contact" @click="navOpen=false" class="text-ink/80">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="relative pt-40 pb-28 px-6 md:px-10 overflow-hidden">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-10 items-center">
+
+      <div class="md:col-span-8">
+        <p class="text-xs tracking-[0.3em] uppercase text-rose mb-6">
+          HR Leader &middot; Fashion &middot; Mseve Initiative &middot; Pageantry &amp; Art
+        </p>
+        <h1 class="font-display text-5xl md:text-7xl leading-[1.05] text-ink">
+          Vivian Mseve
+        </h1>
+        <p class="font-display italic text-2xl md:text-3xl mt-4 tagline-accent">
+          leads with dignity, dresses with intention, and gives without apology.
+        </p>
+        <p class="mt-8 max-w-lg text-ink/70 leading-relaxed">
+          A Nigerian professional working across four worlds that rarely share a table —
+          human resources leadership in aviation, a fashion import and retail venture,
+          grassroots women's empowerment, and a life shaped by travel, pageantry, and art.
+          The thread between them: dignity, in every room she enters.
+        </p>
+        <div class="mt-10 flex items-center gap-6">
+          <a href="#worlds" class="px-7 py-3 bg-wine text-ivory text-sm tracking-wide rounded-full hover:bg-ink transition-colors">
+            Explore the work
+          </a>
+          <a href="#contact" class="text-sm tracking-wide text-ink/70 hover:text-wine transition-colors">
+            Get in touch &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Signature emblem -->
+      <div class="md:col-span-4 flex justify-center md:justify-end">
+        <svg width="220" height="220" viewBox="0 0 220 220" class="emblem-ring">
+          <circle cx="95" cy="95" r="55" fill="none" stroke="#6E2439" stroke-width="1"/>
+          <circle cx="130" cy="95" r="55" fill="none" stroke="#C48A93" stroke-width="1"/>
+          <circle cx="112" cy="130" r="55" fill="none" stroke="#BFA06A" stroke-width="1"/>
+          <circle cx="112" cy="60" r="55" fill="none" stroke="#2B2320" stroke-width="0.75" opacity="0.35"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hairline max-w-6xl mx-auto mt-20"></div>
+  </section>
+
+  <!-- FOUR WORLDS -->
+  <section id="worlds" class="px-6 md:px-10 py-24 bg-blush/40">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal max-w-xl mb-16">
+        <p class="text-xs tracking-[0.3em] uppercase text-rose mb-3">Four Worlds</p>
+        <h2 class="font-display text-4xl md:text-5xl text-ink">Not a career path. A portfolio of convictions.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-px bg-rose/20">
+        <!-- Business & Entrepreneurship -->
+        <div class="reveal bg-ivory p-10 md:p-12">
+          <p class="text-xs tracking-[0.25em] uppercase text-wine mb-4">Business &amp; Entrepreneurship</p>
+          <h3 class="font-display text-2xl mb-4">Founder, Vivian Mseve Fashion</h3>
+          <p class="text-ink/70 leading-relaxed text-sm">
+            A fashion import and retail venture built from scratch — sourcing considered
+            pieces and bringing them to a Nigerian market that increasingly asks for both
+            quality and personality.
+          </p>
+        </div>
+
+        <!-- Aviation, Power & Energy -->
+        <div class="reveal bg-ivory p-10 md:p-12">
+          <p class="text-xs tracking-[0.25em] uppercase text-wine mb-4">Aviation, Power &amp; Energy</p>
+          <h3 class="font-display text-2xl mb-4">Senior HR Officer, Abuja International Airport</h3>
+          <p class="text-ink/70 leading-relaxed text-sm">
+            Leading people operations within one of the country's busiest aviation hubs —
+            the unglamorous, essential work of keeping an airport's workforce supported and running.
+          </p>
+        </div>
+
+        <!-- Lifestyle & Business -->
+        <div class="reveal bg-ivory p-10 md:p-12">
+          <p class="text-xs tracking-[0.25em] uppercase text-wine mb-4">Lifestyle &amp; Business</p>
+          <h3 class="font-display text-2xl mb-4">Traveler, Pageant Queen &amp; Patron of the Arts</h3>
+          <p class="text-ink/70 leading-relaxed text-sm">
+            A former Miss Nigeria contestant with a continuing love of travel, art, and
+            gracious events — carrying pageantry's poise into everyday engagement.
+          </p>
+        </div>
+
+        <!-- NGO & Philanthropy -->
+        <div class="reveal bg-ivory p-10 md:p-12">
+          <p class="text-xs tracking-[0.25em] uppercase text-wine mb-4">NGO &amp; Philanthropy</p>
+          <h3 class="font-display text-2xl mb-4">Founder, Mseve Initiative</h3>
+          <p class="text-ink/70 leading-relaxed text-sm">
+            Empowering women through Dignity, Development, Education, and Health — an NGO
+            built on the belief that a woman's worth should never be in question.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section id="highlights" class="px-6 md:px-10 py-24">
+    <div class="max-w-4xl mx-auto">
+      <p class="reveal text-xs tracking-[0.3em] uppercase text-rose mb-3">Selected Highlights</p>
+      <h2 class="reveal font-display text-4xl md:text-5xl mb-14">A short, honest record.</h2>
+
+      <div class="flex flex-col">
+        <div v-for="(item, i) in highlights" :key="i"
+             class="reveal group flex items-baseline justify-between gap-6 py-6 border-t border-rose/20 last:border-b">
+          <div>
+            <p class="font-display text-xl md:text-2xl text-ink group-hover:text-wine transition-colors">{{ item.title }}</p>
+            <p class="text-sm text-ink/60 mt-1">{{ item.detail }}</p>
+          </div>
+          <span class="text-sm text-rose whitespace-nowrap">{{ item.year }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT STRIP -->
+  <section id="impact" class="px-6 md:px-10 py-20 bg-wine text-ivory">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      <div class="reveal">
+        <p class="font-display text-4xl md:text-5xl">4</p>
+        <p class="text-xs tracking-[0.2em] uppercase text-ivory/70 mt-2">Pillars — Dignity, Development, Education, Health</p>
+      </div>
+      <div class="reveal">
+        <p class="font-display text-4xl md:text-5xl">2</p>
+        <p class="text-xs tracking-[0.2em] uppercase text-ivory/70 mt-2">Ventures built</p>
+      </div>
+      <div class="reveal">
+        <p class="font-display text-4xl md:text-5xl">1</p>
+        <p class="text-xs tracking-[0.2em] uppercase text-ivory/70 mt-2">National pageant stage</p>
+      </div>
+      <div class="reveal">
+        <p class="font-display text-4xl md:text-5xl">∞</p>
+        <p class="text-xs tracking-[0.2em] uppercase text-ivory/70 mt-2">Women worth investing in</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="px-6 md:px-10 py-28">
+    <div class="reveal max-w-3xl mx-auto text-center">
+      <p class="font-display italic text-2xl md:text-3xl leading-relaxed text-ink">
+        &ldquo;She carries the same poise into an HR office, a fashion showroom, and a room
+        full of women rebuilding their lives — dignity is not a stage costume for her, it's a practice.&rdquo;
+      </p>
+      <p class="mt-6 text-xs tracking-[0.25em] uppercase text-rose">Mseve Initiative, Beneficiary Testimonial</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="px-6 md:px-10 py-28 bg-blush/40">
+    <div class="reveal max-w-2xl mx-auto text-center">
+      <p class="text-xs tracking-[0.3em] uppercase text-rose mb-3">Get in touch</p>
+      <h2 class="font-display text-4xl md:text-5xl mb-8">Let's build something worth the effort.</h2>
+      <a href="mailto:hello@vivianmseve.com"
+         class="inline-block px-9 py-4 bg-wine text-ivory text-sm tracking-wide rounded-full hover:bg-ink transition-colors">
+        hello@vivianmseve.com
+      </a>
+      <div class="mt-8 flex justify-center gap-8 text-sm text-ink/60">
+        <a href="#" class="hover:text-wine transition-colors">Instagram</a>
+        <a href="#" class="hover:text-wine transition-colors">LinkedIn</a>
+        <a href="#" class="hover:text-wine transition-colors">Press Kit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="px-6 md:px-10 py-10 border-t border-rose/20">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <svg width="28" height="28" viewBox="0 0 220 220" class="opacity-60">
+        <circle cx="95" cy="95" r="55" fill="none" stroke="#6E2439" stroke-width="2"/>
+        <circle cx="130" cy="95" r="55" fill="none" stroke="#C48A93" stroke-width="2"/>
+        <circle cx="112" cy="130" r="55" fill="none" stroke="#BFA06A" stroke-width="2"/>
+      </svg>
+      <p class="text-xs text-ink/50 tracking-wide">&copy; {{ year }} Vivian Mseve. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        navOpen: false,
+        year: new Date().getFullYear(),
+        highlights: [
+          { title: 'Miss Nigeria Contestant', detail: 'Represented her state on the national pageant stage', year: '' },
+          { title: 'Founded the Mseve Initiative', detail: 'Empowering women through Dignity, Development, Education, and Health', year: '' },
+          { title: 'Senior HR Officer, Abuja International Airport', detail: 'Leading people operations at a major national aviation hub', year: '' },
+          { title: 'Launched Vivian Mseve Fashion', detail: 'A fashion import and retail venture serving discerning Nigerian clients', year: '' },
+        ],
+      };
+    },
+    methods: {},
+    mounted() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    }
+  });
+  app.mount('#app');
+</script>
+
 </body>
 </html>
